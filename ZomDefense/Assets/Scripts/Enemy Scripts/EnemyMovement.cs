@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Barricade");
+        GoToTarget();
     }
 
     private void Update()
@@ -28,7 +29,6 @@ public class EnemyMovement : MonoBehaviour
             if (targetRange > gameObject.GetComponent<EnemyAttack>().attackRange)
             {
                 agent.isStopped = false;
-                GoToTarget();
             }
             else
             {
@@ -37,6 +37,7 @@ public class EnemyMovement : MonoBehaviour
                 if (!isAttacking) // if coroutine is already running, dont run another one
                     StartCoroutine(gameObject.GetComponent<EnemyAttack>().Attack());
             }
+
         }
         else
         {

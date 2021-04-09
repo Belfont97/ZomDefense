@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     private GameObject canvas;
     private GameObject barricade;
 
-    private int enemiesToSpawn;
+    private int normalZomToSpawn = 0;
+    private int fastZomToSpawn = 0;
     private bool enemiesSpawned;
     private bool dayUIShown = false;
 
@@ -39,23 +40,28 @@ public class GameManager : MonoBehaviour
                 case State.NIGHT:
                     switch(nightNumber) // Depending on which night, spawn different amounts of enemies, more as the game progresses
                     {
-                        case 1: enemiesToSpawn = 5;
+                        case 1: normalZomToSpawn = 5;
+                            fastZomToSpawn = 2;
                             break;
 
-                        case 2: enemiesToSpawn = 5;
+                        case 2: normalZomToSpawn = 10;
+                            fastZomToSpawn = 5;
                             break;
 
-                        case 3: enemiesToSpawn = 5;
+                        case 3: normalZomToSpawn = 15;
+                            fastZomToSpawn = 10;
                             break;
 
-                        default: enemiesToSpawn = 1;
+                        default: normalZomToSpawn = 25;
+                            fastZomToSpawn = 15;
                             break;
                     }
 
                     if (!enemiesSpawned) // if enemies haven't been spawned this night, spawn enemies
                     {
                         Debug.Log("Spawning enemies");
-                        enemySpawner.GetComponent<EnemySpawner>().spawnEnemy(enemiesToSpawn);
+                        enemySpawner.GetComponent<EnemySpawner>().spawnNormalZom(normalZomToSpawn);
+                        enemySpawner.GetComponent<EnemySpawner>().spawnFastZom(fastZomToSpawn);
                         enemiesSpawned = true;
                     }
 

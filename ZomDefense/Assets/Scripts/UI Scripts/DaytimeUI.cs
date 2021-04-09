@@ -27,7 +27,7 @@ public class DaytimeUI : MonoBehaviour
 
     private void Update()
     {
-        if (barricade.GetComponent<Barricade>().getHealth() >= 2000 || hoursRemaining < 3)
+        if (barricade.GetComponent<Barricade>().getHealth() >= 1900 || hoursRemaining < 3)
             repairBarricade.enabled = false;         
         else
             repairBarricade.enabled = true;
@@ -55,6 +55,6 @@ public class DaytimeUI : MonoBehaviour
         playerCamera.GetComponent<MouseLook>().enabled = true; // disable camera movement from mouse
         gunObject.GetComponent<Gun>().enabled = true; // disable gun mechanics
         isActive = false;
-        Debug.Log("Reached end up nextNight()");
+        Debug.Log("Reached end of nextNight()");
     }
 }

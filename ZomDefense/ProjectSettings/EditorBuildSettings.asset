@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Menu.unity
+    path: Assets/Scenes/Menu.unity
     guid: 2d60f4293cc235648adddcec85b854ea
   - enabled: 1
-    path: Assets/ZomDefense.unity
+    path: Assets/Scenes/ZomDefense.unity
     guid: 6b4edd0cf15db4645a0c62aaa55198ed
   m_configObjects: {}
