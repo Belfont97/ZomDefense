@@ -12,14 +12,12 @@ public class Barricade : MonoBehaviour
     public void damageBarricade(int damage)
     {
         health -= damage;
-
-        if (health <= 0)
-            destroyBarricade();
     }
 
     public void repair()
     {
         health += 100;
+        canvas.GetComponent<DaytimeUI>().hoursRemaining -= 3;
     }
 
     public int getHealth()
@@ -27,10 +25,9 @@ public class Barricade : MonoBehaviour
         return health;
     }
 
-    private void destroyBarricade()
+    public void destroyBarricade()
     {
-        GameObject.Destroy(this);
-        canvas.GetComponent<uiScript>().gameOver(); // call gameOver() from uiScript to game over
+        this.enabled = false;
     }
 
     

@@ -8,6 +8,8 @@ TagManager:
   - Zombie
   - Barricade
   - Enemy Spawner
+  - DaytimeUI
+  - GameWonText
   layers:
   - Default
   - TransparentFX

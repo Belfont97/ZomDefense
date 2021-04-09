@@ -13,24 +13,23 @@ public class EnemyHealth : MonoBehaviour
         movement = gameObject.GetComponent<EnemyMovement>();
         enemyCollider = gameObject.GetComponent<CapsuleCollider>();
     }
-    private void Update()
+
+    public void TakeDamage(float damage)
     {
+        health -= damage;
+
         if (health <= 0)
         {
             Die();
         }
     }
 
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-    }
-
     private void Die()
     {
         movement.animator.SetBool("isDead", true);
         movement.animator.SetBool("isMoving", false);
-        
+
+        gameObject.tag = "Untagged";
         enemyCollider.enabled = false;
     }
 }

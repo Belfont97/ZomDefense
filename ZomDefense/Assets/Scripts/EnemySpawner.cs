@@ -7,8 +7,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyToSpawn;
     public Transform spawnPosition;
 
-    public void spawnEnemy()
+    public void spawnEnemy(int enemyNum)
     {
-        Instantiate(enemyToSpawn, spawnPosition.position, Quaternion.identity, spawnPosition);
+        for (int i = 0; i < enemyNum; i++)
+            Instantiate(enemyToSpawn, spawnPosition.position, Quaternion.identity, spawnPosition);
     }
 }

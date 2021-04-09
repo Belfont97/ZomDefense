@@ -13,10 +13,12 @@ public class uiScript : MonoBehaviour
     public GameObject gunObject;
 
     public Text gameOverText;
+    public Text gameWonText;
 
     private void Start()
     {
         gameOverText.enabled = false;
+        gameWonText.enabled = false;
     }
 
     // Update is called once per frame
@@ -35,5 +37,10 @@ public class uiScript : MonoBehaviour
         playerCamera.GetComponent<MouseLook>().enabled = false; // disable camera movement from mouse
         gunObject.GetComponent<Gun>().enabled = false; // disable gun mechanics
         Cursor.lockState = CursorLockMode.Confined; // unlock the cursor to click again
+    }
+
+    public void gameWin()
+    {
+        gameWonText.enabled = true;
     }
 }
