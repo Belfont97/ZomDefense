@@ -29,7 +29,7 @@ public class EnemyHealth : MonoBehaviour
         movement.animator.SetBool("isDead", true);
         movement.animator.SetBool("isMoving", false);
 
-        gameObject.tag = "Untagged";
+        gameObject.tag = "Dead Zombie";
         enemyCollider.enabled = false;
     }
 }

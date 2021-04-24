@@ -10,6 +10,8 @@ TagManager:
   - Enemy Spawner
   - DaytimeUI
   - GameWonText
+  - Dead Zombie
+  - Street Light
   layers:
   - Default
   - TransparentFX

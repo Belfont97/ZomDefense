@@ -9,15 +9,12 @@ public class EnemySpawner : MonoBehaviour
 
     public Transform spawnPosition;
 
-    public void spawnNormalZom(int enemyNum)
+    public void spawnZoms(int normZoms, int fastZoms)
     {
-        for (int i = 0; i < enemyNum; i++)
+        for (int i = 0; i < normZoms; i++)
             Instantiate(NormalZom, spawnPosition.position, Quaternion.identity, spawnPosition);
-    }
 
-    public void spawnFastZom(int enemyNum)
-    {
-        for (int i = 0; i < enemyNum; i++)
+        for (int i = 0; i < fastZoms; i++)
             Instantiate(FastZom, spawnPosition.position, Quaternion.identity, spawnPosition);
     }
 }

@@ -60,8 +60,7 @@ public class GameManager : MonoBehaviour
                     if (!enemiesSpawned) // if enemies haven't been spawned this night, spawn enemies
                     {
                         Debug.Log("Spawning enemies");
-                        enemySpawner.GetComponent<EnemySpawner>().spawnNormalZom(normalZomToSpawn);
-                        enemySpawner.GetComponent<EnemySpawner>().spawnFastZom(fastZomToSpawn);
+                        enemySpawner.GetComponent<EnemySpawner>().spawnZoms(normalZomToSpawn, fastZomToSpawn);
                         enemiesSpawned = true;
                     }
 
@@ -94,6 +93,7 @@ public class GameManager : MonoBehaviour
                     else
                     {
                         nightNumber++;
+                        cleanUp();
                         gameState = State.DAY;
                     }
 
@@ -132,6 +132,19 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Unkown game state!");
                     break;
             }
+        }
+    }
+
+    /**
+     * Cleanup game area by destroying dead zombies
+     */
+    private void cleanUp()
+    {
+        GameObject[] deadZombies = GameObject.FindGameObjectsWithTag("Dead Zombie");
+
+        foreach (GameObject zombie in deadZombies)
+        {
+            Destroy(zombie);
         }
     }
 

@@ -16,7 +16,7 @@ public class Barricade : MonoBehaviour
 
     public void repair()
     {
-        health += 100;
+        health += 50;
         canvas.GetComponent<DaytimeUI>().hoursRemaining -= 3;
     }
 
