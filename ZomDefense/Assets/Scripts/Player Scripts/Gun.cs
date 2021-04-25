@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     private int currentAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
+    public float upRecoil;
 
     public Camera fpsCam; // reference to player camera
     public ParticleSystem muzzleFlash; // muzzleFlash particle effect to use
@@ -87,6 +88,8 @@ public class Gun : MonoBehaviour
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal)); 
             Destroy(impactGO, 2f); // destroy impact effects after 2 seconds
         }
+
+        fpsCam.transform.localRotation = Quaternion.Euler(fpsCam.transform.localRotation.x + upRecoil, fpsCam.transform.localRotation.y, fpsCam.transform.localRotation.z);
     }
 
     public int getCurrentAmmo()

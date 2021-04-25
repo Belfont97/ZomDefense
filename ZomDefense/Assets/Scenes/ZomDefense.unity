@@ -19415,6 +19415,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 199000013307124530, guid: 9defeac88977c0d448aa4541073ee9e4,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
 --- !u!198 &1060498004 stripped
@@ -43988,6 +43993,7 @@ MonoBehaviour:
   fireRate: 15
   maxAmmo: 30
   reloadTime: 1
+  upRecoil: 1
   fpsCam: {fileID: 124350736}
   muzzleFlash: {fileID: 1060498004}
   impactEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
