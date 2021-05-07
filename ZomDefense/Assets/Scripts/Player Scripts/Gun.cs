@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash; // muzzleFlash particle effect to use
     public GameObject impactEffect; // impact effect to use
     public Animator animator;
+    public AudioSource shootSound;
 
     private float nextTimeToFire = 0f;
 
@@ -47,6 +48,10 @@ public class Gun : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles reloading mechanics
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Reload()
     {
         isReloading = true;
@@ -68,6 +73,7 @@ public class Gun : MonoBehaviour
     void Shoot ()
     {
         muzzleFlash.Play();
+        shootSound.Play(0);
 
         currentAmmo--;
 
@@ -89,9 +95,13 @@ public class Gun : MonoBehaviour
             Destroy(impactGO, 2f); // destroy impact effects after 2 seconds
         }
 
-        fpsCam.transform.localRotation = Quaternion.Euler(fpsCam.transform.localRotation.x + upRecoil, fpsCam.transform.localRotation.y, fpsCam.transform.localRotation.z);
+        fpsCam.GetComponent<MouseLook>().xRotation -= upRecoil; //apply recoil by modifying xrotation in MouseLook script
     }
 
+    /// <summary>
+    /// Returns current ammo count as an integer
+    /// </summary>
+    /// <returns></returns>
     public int getCurrentAmmo()
     {
         return currentAmmo;
