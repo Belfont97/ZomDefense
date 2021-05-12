@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
                     break;
 
                 default:
-                    Debug.Log("Unkown game state!");
+                    Debug.Log("Unknown game state!");
                     break;
             }
         }
@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
         enemiesSpawned = false;
         nightNumber = 1;
         dayNumber = 1;
+        gameState = State.NIGHT;
 
         Debug.Log("Game Manager Reset");
     }
