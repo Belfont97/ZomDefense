@@ -15,8 +15,12 @@ public class DaytimeUI : MonoBehaviour
     public Text hoursRemainingText;
     public int hoursRemaining;
 
+    public Text barricadeHealth;
+
     public Button repairBarricade;
+    public Button reinforceBarricade;
     public Button fixLightsButton;
+    public Button scavengeBullets;
 
     private GameObject[] lights;
 
@@ -32,17 +36,32 @@ public class DaytimeUI : MonoBehaviour
 
     private void Update()
     {
-        if (barricade.GetComponent<Barricade>().getHealth() > 250 || hoursRemaining < 3)
+        // Enable or disable repair barricade button
+        if (barricade.GetComponent<Barricade>().getHealth() >= barricade.GetComponent<Barricade>().getMaxHealth() || hoursRemaining < 3)
             repairBarricade.enabled = false;         
         else
             repairBarricade.enabled = true;
 
+        // Enable or disable fix lights button
         if (lightsOn == false && hoursRemaining >= 5)
             fixLightsButton.enabled = true;
         else
             fixLightsButton.enabled = false;
 
-        hoursRemainingText.text = "Hours Remaining: " + hoursRemaining;
+        // Enable or disable reinforce barricade button
+        if (hoursRemaining < 5)
+            reinforceBarricade.enabled = false;
+        else
+            reinforceBarricade.enabled = true;
+
+        // Enable or disable scavenge bullets button
+        if (hoursRemaining < 3)
+            scavengeBullets.enabled = false;
+        else
+            scavengeBullets.enabled = true;
+
+        hoursRemainingText.text = "Hours Remaining: " + hoursRemaining; // set hours remaining text
+        barricadeHealth.text = "Barricade Health: " + barricade.GetComponent<Barricade>().getHealth() + "/" + barricade.GetComponent<Barricade>().getMaxHealth(); // set barricade health text
     }
 
     public void showDayUI()

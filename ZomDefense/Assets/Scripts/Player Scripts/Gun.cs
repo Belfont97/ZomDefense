@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
     public GameObject impactEffect; // impact effect to use
     public Animator animator;
     public AudioSource shootSound;
+    public Canvas canvas;
 
     private float nextTimeToFire = 0f;
 
@@ -29,7 +30,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PauseMenu.GameisPaused == false)
+        if (canvas.GetComponent<PauseMenu>().GameisPaused == false)
         {
             if (isReloading)
                 return;
@@ -105,5 +106,11 @@ public class Gun : MonoBehaviour
     public int getCurrentAmmo()
     {
         return currentAmmo;
+    }
+
+    public void increaseDamage(int increaseDamage)
+    {
+        damage += increaseDamage;
+        canvas.GetComponent<DaytimeUI>().hoursRemaining -= 3;
     }
 }

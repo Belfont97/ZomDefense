@@ -12,6 +12,7 @@ TagManager:
   - GameWonText
   - Dead Zombie
   - Street Light
+  - Game Manager
   layers:
   - Default
   - TransparentFX

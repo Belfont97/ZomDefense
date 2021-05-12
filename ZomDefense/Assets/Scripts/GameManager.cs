@@ -13,9 +13,13 @@ public class GameManager : MonoBehaviour
     private GameObject canvas;
     private GameObject barricade;
 
+    [SerializeField]
     private int normalZomToSpawn = 0;
+    [SerializeField]
     private int fastZomToSpawn = 0;
+    [SerializeField]
     private bool enemiesSpawned;
+    [SerializeField]
     private bool dayUIShown = false;
 
     private static State gameState = State.NIGHT;
@@ -23,11 +27,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        enemiesSpawned = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
         if (SceneManager.GetActiveScene().name == "ZomDefense")
         {
@@ -100,11 +103,10 @@ public class GameManager : MonoBehaviour
                     break;
 
                 case State.DAY:
-                    Debug.Log("Day state reached");   
-                    
                     if (!dayUIShown)
                     {
                         canvas.GetComponent<DaytimeUI>().showDayUI();
+                        Debug.Log("Day state reached");
                         dayUIShown = true;
                     }
                         
@@ -159,4 +161,15 @@ public class GameManager : MonoBehaviour
         GAMEWIN,
         NIGHTOVER
     };
+
+    public void resetGame()
+    {
+        normalZomToSpawn = 0;
+        fastZomToSpawn = 0;
+        enemiesSpawned = false;
+        nightNumber = 1;
+        dayNumber = 1;
+
+        Debug.Log("Game Manager Reset");
+    }
 }
